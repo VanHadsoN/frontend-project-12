@@ -4,7 +4,10 @@
   "description": "Hexlet-Chat (like Slack) is a real-time messaging application. It includes registration, authorization, error page and chat page.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build --prefix frontend",
+    "start": "start-server -s ./frontend/build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cd frontend && npm ci"
   },
   "author": "Konstantin Stasenko",
   "license": "ISC",
