@@ -1,20 +1,26 @@
-import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import routes  from '..routes.js';
+import notFoundImg from '../img/404.png';
 
-const ErrorPage = () => {
-    const { t } = useTranslation();
+const NotFound = () => {
+  const { t } = useTranslation();
 
-    return (
-    <div id="error-page" style={{ textAlign: 'center', marginTop: '20vh' }}>
-        <h1>{t('404.title')}</h1>
-        <p>{t('404.text')}</p>
-        <p>
-        <i>
-            <b>{t('404.descr')}</b>
-        </i>
-        </p>
+  return (
+    <div className="text-center not-found-container">
+      <img src={notFoundImg} alt={t('notFound.pageNotFound')} className="img-fluid" width="450" />
+      <h1 className="title text-center mb-4">{t('notFound.pageNotFound')}</h1>
+      <p className="text-muted">
+        <span className="to-main">
+          {t('notFound.youCanGo')}
+          {' '}
+        </span>
+        <NavLink to={routes.chatPagePath()} className="link">
+          {t('notFound.toMainPage')}
+        </NavLink>
+      </p>
     </div>
-    );
+  );
 };
 
-export default ErrorPage;
+export default NotFound;
