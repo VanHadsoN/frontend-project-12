@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuthorization } from '../../hooks';
 import LoginButton from '../buttons/LoginButton';
-import { chatContextRoutes, appRoutes } from '../../routes';
+import routes  from '..routes.js';
 import loginSchema from '../../validation/loginSchema';
 
 const LoginForm = () => {
@@ -25,10 +25,10 @@ const LoginForm = () => {
       try {
         setInvalidUserData(false);
         await axios
-          .post(chatContextRoutes.login(), values)
+          .post(routes.login(), values)
           .then((response) => {
             logIn(response.data);
-            navigate(appRoutes.chatPagePath());
+            navigate(routes.chatPagePath());
           });
       } catch (error) {
         if (error.isAxiosError && error.response.status === 401) {
