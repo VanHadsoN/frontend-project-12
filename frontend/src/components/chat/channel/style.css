@@ -1,0 +1,49 @@
+.channels-title {
+    color: var(--grey-dark);
+}
+
+.add-channel-button:active {
+    border: none;
+    box-shadow: 2px 2px 5px 0 var(--lilac-middle);
+}
+
+.channel-button {
+    padding: 0.4rem 0.8rem;
+
+    background-color: var(--lilac-light);
+    color: var(--grey-middle);
+    border: none;
+
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+#dropdown-menu {
+    border: none;
+    border-radius: 0%;
+    background-color: var(--lilac-light);
+    color: var(--grey-light)
+}
+
+.current-channel,
+#dropdown-menu.current-channel, 
+.channel-button:active {
+    background-color: var(--lilac-dark);
+    color: var(--white-grey-light);
+}
+
+.channel-button:hover, 
+#dropdown-menu:hover {
+    background-color: var(--lilac-middle);
+    color: var(--white-grey-light)
+}
+
+#dropdown-item:hover {
+    background-color: var(--white-grey-middle);
+}
+
+#dropdown-item:active {
+    background-color: var(--white-grey-dark);
+    color: var(--grey-dark);
+}
