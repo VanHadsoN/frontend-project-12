@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { addChannel, setCurrentChannel } from '../slices/channelsSlice';
-import routes  from '..routes.js';
+import routes  from '../routes.js';
 
 export const ChatContext = createContext({});
 
