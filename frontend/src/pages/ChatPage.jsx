@@ -12,7 +12,7 @@ import ChatPanel from '../components/chat/chat-panel/ChatPanel';
 import ModalWindow from '../components/modal/ModalWindow';
 import MessageBox from '../components/chat/message-box/MessageBox';
 import MessageForm from '../components/chat/MessageForm';
-import routes  from '..routes.js';
+import routes  from '../routes.js';
 
 const Chat = () => {
   const { t } = useTranslation();
