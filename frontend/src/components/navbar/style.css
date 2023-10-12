@@ -1,0 +1,41 @@
+.navbar {
+    padding: 8px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 0 12px;
+    margin: 0 auto;
+
+    width: 1320px;
+    height: 40px;
+}
+
+.navbar-brand {
+    color: var(--lilac-dark);
+    font-weight: bold;
+}
+
+.navbar-brand:visited {
+    color: var(--lilac-dark);
+}
+
+.navbar-brand:hover {
+    color: var(--lilac-middle);
+}
+
+.logout-button {
+    padding: 5px 10px;
+
+    color: var(--white-grey-light);
+    background-color: var(--lilac-dark);
+    border: 1px solid var(--lilac-middle);
+    border-radius: 5px;
+}
+
+.logout-button:active {
+    position: relative;
+    top: 2px;
+}
