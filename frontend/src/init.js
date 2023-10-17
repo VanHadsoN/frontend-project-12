@@ -49,18 +49,20 @@ const init = async () => {
   profanityFilter.add(profanityFilter.getDictionary(defaultLanguage));
 
   const rollbarConfig = {
-    accessToken: process.env.REACT_APP_ROLLBAR_TOKEN,
-    payload: {
-      environment: 'production',
-    },
-    captureUncaught: true,
-    captureUnhandledRejections: true,
+    accessToken: '710e82ed72f1430fba3024cdfdb9806b',
+    environment: 'testenv',
+  };
+  
+  function TestError() {
+    const a = null;
+    return a.hello();
   };
 
   return (
     <Provider store={store}>
       <RollbarProvider config={rollbarConfig}>
         <ErrorBoundary>
+          <TestError />
           <UserDataContextProvider>
             <ChatContextProvider socket={socket}>
               <I18nextProvider i18n={i18n}>
