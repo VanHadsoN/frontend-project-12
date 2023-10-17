@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { appRoutes } from '../../routes';
+import routes  from '../../routes.js';
 import { useAuthorization } from '../../hooks';
 import './style.css';
 
@@ -10,7 +10,7 @@ const NavBar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    navigate(appRoutes.loginPagePath());
+    navigate(routes.loginPagePath());
     logOut();
   };
 
@@ -27,7 +27,7 @@ const NavBar = () => {
   return (
     <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
       <div className="nav-container">
-        <NavLink to={appRoutes.chatPagePath()} className="navbar-brand">
+        <NavLink to={routes.chatPagePath()} className="navbar-brand">
           {t('navigation.chatName')}
         </NavLink>
         { LogoutButton(handleLogout, t('navigation.exitBtn')) }
