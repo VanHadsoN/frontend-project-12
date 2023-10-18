@@ -12,7 +12,7 @@ import { addChannel, removeChannel, renameChannel } from './slices/channelsSlice
 import store from './slices';
 import App from './components/App';
 import resources from './locales/index.js';
-import routes from './routes';
+import { appRoutes } from './routes';
 
 const defaultLanguage = 'ru';
 
@@ -30,7 +30,7 @@ const init = async () => {
       },
     });
 
-  const socket = io(routes.chatPagePath(), { autoConnect: true });
+  const socket = io(appRoutes.chatPagePath(), { autoConnect: true });
 
   socket.on('newMessage', (message) => {
     store.dispatch(addMessage(message));
@@ -49,20 +49,18 @@ const init = async () => {
   profanityFilter.add(profanityFilter.getDictionary(defaultLanguage));
 
   const rollbarConfig = {
-    accessToken: '710e82ed72f1430fba3024cdfdb9806b',
-    environment: 'testenv',
-  };
-  
-  function TestError() {
-    const a = null;
-    return a.hello();
+    accessToken: process.env.REACT_APP_ROLLBAR_TOKEN,
+    payload: {
+      environment: 'production',
+    },
+    captureUncaught: true,
+    captureUnhandledRejections: true,
   };
 
   return (
     <Provider store={store}>
       <RollbarProvider config={rollbarConfig}>
         <ErrorBoundary>
-          <TestError />
           <UserDataContextProvider>
             <ChatContextProvider socket={socket}>
               <I18nextProvider i18n={i18n}>

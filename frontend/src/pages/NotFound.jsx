@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import routes  from '../routes.js';
+import { appRoutes } from '../routes';
 import notFoundImg from '../img/404.png';
 
 const NotFound = () => {
@@ -15,7 +15,7 @@ const NotFound = () => {
           {t('notFound.youCanGo')}
           {' '}
         </span>
-        <NavLink to={routes.chatPagePath()} className="link">
+        <NavLink to={appRoutes.chatPagePath()} className="link">
           {t('notFound.toMainPage')}
         </NavLink>
       </p>

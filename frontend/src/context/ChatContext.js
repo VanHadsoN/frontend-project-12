@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { addChannel, setCurrentChannel } from '../slices/channelsSlice';
-import routes  from '../routes.js';
+import { chatContextRoutes } from '../routes';
 
 export const ChatContext = createContext({});
 
@@ -39,7 +39,7 @@ const ChatContextProvider = ({ socket, children }) => {
 
   const getServerData = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    const response = await axios.get(routes.data(), { headers: { Authorization: `Bearer ${user.token}` } });
+    const response = await axios.get(chatContextRoutes.data(), { headers: { Authorization: `Bearer ${user.token}` } });
     return response;
   };
 

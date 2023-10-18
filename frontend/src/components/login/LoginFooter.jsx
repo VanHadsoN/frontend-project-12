@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import routes  from '../../routes.js';
+import { appRoutes } from '../../routes';
 
 const LoginFooter = () => {
   const { t } = useTranslation();
@@ -12,7 +12,7 @@ const LoginFooter = () => {
           {t('login.noAccount')}
           {' '}
         </span>
-        <NavLink to={routes.signupPagePath()} className="link">
+        <NavLink to={appRoutes.signupPagePath()} className="link">
           {t('registration.registrationTitle')}
         </NavLink>
       </div>

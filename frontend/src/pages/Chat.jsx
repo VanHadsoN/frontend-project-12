@@ -12,7 +12,7 @@ import ChatPanel from '../components/chat/chat-panel/ChatPanel';
 import ModalWindow from '../components/modal/ModalWindow';
 import MessageBox from '../components/chat/message-box/MessageBox';
 import MessageForm from '../components/chat/MessageForm';
-import routes  from '../routes.js';
+import { appRoutes } from '../routes';
 
 const Chat = () => {
   const { t } = useTranslation();
@@ -37,14 +37,14 @@ const Chat = () => {
   useEffect(() => {
     if (loadingStatus === 'failed') {
       logOut();
-      navigate(routes.loginPagePath());
+      navigate(appRoutes.loginPagePath());
       toast.error(t('toast.networkError'));
       rollbar.error('ChatFailed');
     }
 
     if (loadingStatus === 'authError') {
       logOut();
-      navigate(routes.loginPagePath());
+      navigate(appRoutes.loginPagePath());
       toast.error(t('toast.authError'));
       rollbar.error('AuthFailed');
     }

@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuthorization } from '../../hooks';
 import LoginButton from '../buttons/LoginButton';
-import routes  from '../../routes.js';
+import { chatContextRoutes, appRoutes } from '../../routes';
 import signupSchema from '../../validation/signupSchema';
 
 const SignupForm = () => {
@@ -26,10 +26,10 @@ const SignupForm = () => {
       try {
         setInvalidAuth(false);
         await axios
-          .post(routes.signup(), { username, password })
+          .post(chatContextRoutes.signup(), { username, password })
           .then((response) => {
             logIn(response.data);
-            navigate(routes.chatPagePath());
+            navigate(appRoutes.chatPagePath());
           });
       } catch (error) {
         if (error.isAxiosError && error.response.status === 409) {
