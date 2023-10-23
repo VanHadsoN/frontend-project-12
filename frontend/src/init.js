@@ -49,7 +49,7 @@ const init = async () => {
   profanityFilter.add(profanityFilter.getDictionary(defaultLanguage));
 
   const rollbarConfig = {
-    accessToken: process.env.REACT_APP_ROLLBAR_TOKEN,
+    accessToken: '8eedf05bd2d244b992c9ef8ca0a4d37c',
     payload: {
       environment: 'production',
     },
