@@ -51,7 +51,7 @@ const init = async () => {
   const rollbarConfig = {
     accessToken: '8eedf05bd2d244b992c9ef8ca0a4d37c',
     payload: {
-      environment: 'production',
+      environment: 'testenv',
     },
     captureUncaught: true,
     captureUnhandledRejections: true,
