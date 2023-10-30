@@ -53,7 +53,7 @@ code {
 }
 
 .title {
-  color: var(--lilac-dark);
+  color: var(--bs-blue);
   font-weight: bold;
 }
 

@@ -1,20 +1,20 @@
 .login-button {
     padding: 5px 0;
 
-    color: var(--grey-dark);
-    background-color: var(--lilac-light);
-    border: 1px solid var(--lilac-dark);
+    color: aliceblue;
+    background-color: var(--bs-blue);
+    border: 1px solid navy;
     border-radius: 5px;
 }
 
 .login-button:hover {
     color: var(--white-grey-light);
-    background-color: var(--lilac-middle);
+    background-color: cornflowerblue;
 }
 
 .login-button:active {
     color: var(--white-grey-light);
-    background-color: var(--lilac-dark);
+    background-color: darkblue;
 
     position: relative;
     top: 2px;
