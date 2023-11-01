@@ -1,20 +1,20 @@
 .login-button {
     padding: 5px 0;
 
-    color: aliceblue;
-    background-color: var(--bs-blue);
-    border: 1px solid navy;
+    color: var(--white-grey-light);
+    background-color: var(--blue-middle);
+    border: 1px solid var(--blue-middle);
     border-radius: 5px;
 }
 
 .login-button:hover {
     color: var(--white-grey-light);
-    background-color: cornflowerblue;
+    background-color: var(--blue-dark);
 }
 
 .login-button:active {
-    color: var(--white-grey-light);
-    background-color: darkblue;
+    color: var(--grey-dark);
+    background-color: var(--blue-light);
 
     position: relative;
     top: 2px;
@@ -23,24 +23,24 @@
 .modal-button {
     padding: 5px 8px;
     margin: 15px 5px 0;
-    background-color: var(--lilac-light);
-    color: var( --grey-middle);
+    background-color: var(--blue-light);
+    color: var(--grey-middle);
     border: none;
     border-radius: 5px;
 }
 
 .high-priority {
-    background-color: var(--lilac-middle);
+    background-color: var(--blue-middle);
     box-sizing: content-box;
-    border: solid 0.8px var(--lilac-dark);
+    border: solid 0.8px var(--blue-dark);
 }
 
 .modal-button:hover {
     color: var(--white-grey-light);
-    background-color: var(--lilac-dark);
+    background-color: var(--blue-dark);
 };
 
 .modal-button:active {
-    background-color: var(--lilac-dark);
+    background-color: var(--blue-dark);
     color: var(--white);
 }
