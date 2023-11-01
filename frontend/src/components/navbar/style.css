@@ -14,24 +14,24 @@
 }
 
 .navbar-brand {
-    color: var(--bs-blue);
+    color: var(--blue-dark);
     font-weight: bold;
 }
 
 .navbar-brand:visited {
-    color: var(--bs-blue);
+    color: var(--blue-dark);
 }
 
 .navbar-brand:hover {
-    color: var(--bs-blue);
+    color: var(--blue-dark);
 }
 
 .logout-button {
     padding: 5px 10px;
 
-    color: var(--bs-gray);
-    background-color: var(--bs-white);
-    border: 1px solid var(--bs-blue);
+    color: var(--white-grey-light);
+    background-color: var(--blue-dark);
+    border: 1px solid var(--blue-middle);
     border-radius: 5px;
 }
 
