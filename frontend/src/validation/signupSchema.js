@@ -4,8 +4,8 @@ const signupSchema = (
   userNameLength,
   passwordLength,
   requaredField,
-  passwordMatching
-  ) => Yup.object().shape({
+  passwordMatching,
+) => Yup.object().shape({
   username: Yup
     .string()
     .trim()
