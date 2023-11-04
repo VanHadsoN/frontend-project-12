@@ -20,34 +20,34 @@ const AuthorizationRoute = ({ children }) => {
 };
 
 const App = () => (
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path="*" element={<NotFound />} />
-        <Route
-          path={appRoutes.chatPagePath()}
-          element={(
-            <AuthorizationRoute>
-              <Chat />
-            </AuthorizationRoute>
-          )}
-        />
-        <Route path={appRoutes.loginPagePath()} element={<Login />} />
-        <Route path={appRoutes.signupPagePath()} element={<Signup />} />
-      </Routes>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
+  <BrowserRouter>
+    <NavBar />
+    <Routes>
+      <Route path="*" element={<NotFound />} />
+      <Route
+        path={appRoutes.chatPagePath()}
+        element={(
+          <AuthorizationRoute>
+            <Chat />
+          </AuthorizationRoute>
+        )}
       />
-    </BrowserRouter>
-  );
+      <Route path={appRoutes.loginPagePath()} element={<Login />} />
+      <Route path={appRoutes.signupPagePath()} element={<Signup />} />
+    </Routes>
+    <ToastContainer
+      position="top-right"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+    />
+  </BrowserRouter>
+);
 
 export default App;
