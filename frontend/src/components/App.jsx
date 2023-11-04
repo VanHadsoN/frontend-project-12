@@ -19,8 +19,7 @@ const AuthorizationRoute = ({ children }) => {
   return authorization.userData ? children : <Navigate to={appRoutes.loginPagePath()} />;
 };
 
-const App = () => {
-  return (
+const App = () => (
     <BrowserRouter>
       <NavBar />
       <Routes>
@@ -50,6 +49,5 @@ const App = () => {
       />
     </BrowserRouter>
   );
-};
 
 export default App;
