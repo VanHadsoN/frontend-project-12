@@ -14,12 +14,12 @@ import { appRoutes } from '../routes';
 import { useAuthorization } from '../hooks';
 import 'react-toastify/dist/ReactToastify.css';
 
-const App = () => {
-  const AuthorizationRoute = ({ children }) => {
-    const authorization = useAuthorization();
-    return authorization.userData ? children : <Navigate to={appRoutes.loginPagePath()} />;
-  };
+const AuthorizationRoute = ({ children }) => {
+  const authorization = useAuthorization();
+  return authorization.userData ? children : <Navigate to={appRoutes.loginPagePath()} />;
+};
 
+const App = () => {
   return (
     <BrowserRouter>
       <NavBar />
