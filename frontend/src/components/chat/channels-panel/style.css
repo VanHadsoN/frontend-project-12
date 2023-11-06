@@ -10,9 +10,9 @@
     width: 20px;
     height: 20px;
   
-    color: var(--lilac-dark);
+    color: var(--blue-dark);
   }
   
 .add-icon:hover {
-    color: var(--lilac-middle);
+    color: var(--blue-middle);
 }

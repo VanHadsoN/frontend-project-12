@@ -4,13 +4,13 @@
 
 .add-channel-button:active {
     border: none;
-    box-shadow: 2px 2px 5px 0 var(--lilac-middle);
+    box-shadow: 2px 2px 5px 0 var(--blue-middle);
 }
 
 .channel-button {
     padding: 0.4rem 0.8rem;
 
-    background-color: var(--lilac-light);
+    background-color: var(--blue-light);
     color: var(--grey-middle);
     border: none;
 
@@ -22,20 +22,20 @@
 #dropdown-menu {
     border: none;
     border-radius: 0%;
-    background-color: var(--lilac-light);
+    background-color: var(--blue-light);
     color: var(--grey-light)
 }
 
 .current-channel,
 #dropdown-menu.current-channel, 
 .channel-button:active {
-    background-color: var(--lilac-dark);
+    background-color: var(--blue-dark);
     color: var(--white-grey-light);
 }
 
 .channel-button:hover, 
 #dropdown-menu:hover {
-    background-color: var(--lilac-middle);
+    background-color: var(--blue-middle);
     color: var(--white-grey-light)
 }
 

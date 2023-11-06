@@ -53,12 +53,12 @@ code {
 }
 
 .title {
-  color: var(--bs-blue);
+  color: var(--blue-middle);
   font-weight: bold;
 }
 
 .link {
-  color: var(--lilac-dark)
+  color: var(--blue-dark)
 }
 
 .form-floating {
@@ -66,8 +66,8 @@ code {
 }
 
 .form-control:focus {
-  border-color: var(--lilac-light);
-  box-shadow: 2px 2px 5px 0 var(--lilac-middle);
+  border-color: var(--blue-light);
+  box-shadow: 2px 2px 5px 0 var(---blue-middle);
 }
 
 .btn-danger {

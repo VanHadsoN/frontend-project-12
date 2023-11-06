@@ -3,9 +3,9 @@
   width: fit-content;
   padding: 5px 10px;
   
-  border: 1px solid var(--lilac-middle);
+  border: 1px solid var(--blue-middle);
   border-radius: 7px 7px 7px 0px;
-  background-color: var(--lilac-super-light);
+  background-color: var(--blue-super-light);
   color: var(--grey-light);
 }
   
