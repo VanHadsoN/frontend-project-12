@@ -4,6 +4,14 @@ import { appRoutes } from '../../routes';
 import { useAuthorization } from '../../hooks';
 import './style.css';
 
+const LogoutButton = (handle, title) => {
+  if (localStorage.getItem('user') !== null) {
+    return (
+      <button type="button" className="logout-button" onClick={handle}>{title}</button>
+    );
+  }
+  return null;
+};
 const NavBar = () => {
   const { t } = useTranslation();
   const { logOut } = useAuthorization();
@@ -13,17 +21,6 @@ const NavBar = () => {
     navigate(appRoutes.loginPagePath());
     logOut();
   };
-
-  const LogoutButton = (handle, title) => {
-    if (localStorage.getItem('user') !== null) {
-      return (
-        <button type="button" className="logout-button" onClick={handle}>{title}</button>
-      );
-    }
-
-    return null;
-  };
-
   return (
     <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
       <div className="nav-container">
