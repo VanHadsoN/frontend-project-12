@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createContext } from 'react';
+import { createContext, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { addChannel, setCurrentChannel } from '../slices/channelsSlice';
 import { chatContextRoutes } from '../routes';
@@ -42,16 +42,16 @@ const ChatContextProvider = ({ socket, children }) => {
     const response = await axios.get(chatContextRoutes.data(), { headers: { Authorization: `Bearer ${user.token}` } });
     return response;
   };
-
+  const contextValue = useMemo(() => ({
+    addNewMessage,
+    addNewChannel,
+    removeSelectedChannel,
+    renameSelectedChannel,
+    getServerData,
+  }), []);
+  
   return (
-    <ChatContext.Provider value={{
-      addNewMessage,
-      addNewChannel,
-      removeSelectedChannel,
-      renameSelectedChannel,
-      getServerData,
-    }}
-    >
+    <ChatContext.Provider value={contextValue}>
       {children}
     </ChatContext.Provider>
   );
