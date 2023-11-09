@@ -1,4 +1,4 @@
-import { createContext, useState, useMemo } from 'react';
+import { createContext, useState, useMemo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { unload } from '../slices/loadingSlice';
 
@@ -15,18 +15,17 @@ const UserDataContextProvider = ({ children }) => {
     setUserData(data);
   };
 
-  const logOut = () => {
+  const logOut = useCallback(() => {
     localStorage.removeItem('user');
     dispatch(unload());
     setUserData(null);
-  };
+  }, [dispatch]);
 
-  const getUserName = () => userData.username;
+  const getUserName = useCallback(() => userData.username, [userData]);
 
-  // Use useMemo to memoize the context value
   const contextValue = useMemo(() => ({
     userData, logIn, logOut, getUserName,
-  }), [userData]);
+  }), [userData, logOut, getUserName]);
 
   return (
     <UserDataContext.Provider value={contextValue}>
