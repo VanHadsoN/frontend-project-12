@@ -24,7 +24,10 @@ const UserDataContextProvider = ({ children }) => {
   const getUserName = useCallback(() => userData.username, [userData]);
 
   const contextValue = useMemo(() => ({
-    userData, logIn, logOut, getUserName,
+    userData,
+    logIn,
+    logOut,
+    getUserName,
   }), [userData, logOut, getUserName]);
 
   return (
