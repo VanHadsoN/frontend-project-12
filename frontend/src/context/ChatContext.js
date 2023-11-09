@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createContext, useMemo, useCallback } from 'react'; // Import useCallback
+import { createContext, useMemo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { addChannel, setCurrentChannel } from '../slices/channelsSlice';
 import { chatContextRoutes } from '../routes';
