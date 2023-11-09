@@ -23,6 +23,7 @@ const UserDataContextProvider = ({ children }) => {
 
   const getUserName = useCallback(() => userData.username, [userData]);
 
+  // Include getUserName and logOut in the dependency array
   const contextValue = useMemo(() => ({
     userData,
     logIn,
