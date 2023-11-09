@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { unload } from '../slices/loadingSlice';
 
@@ -23,11 +23,13 @@ const UserDataContextProvider = ({ children }) => {
 
   const getUserName = () => userData.username;
 
+  // Use useMemo to memoize the context value
+  const contextValue = useMemo(() => ({
+    userData, logIn, logOut, getUserName,
+  }), [userData]);
+
   return (
-    <UserDataContext.Provider value={{
-      userData, logIn, logOut, getUserName,
-    }}
-    >
+    <UserDataContext.Provider value={contextValue}>
       {children}
     </UserDataContext.Provider>
   );
