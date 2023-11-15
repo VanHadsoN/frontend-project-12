@@ -49,9 +49,9 @@ const init = async () => {
   profanityFilter.add(profanityFilter.getDictionary(defaultLanguage));
 
   const rollbarConfig = {
-    accessToken: '8eedf05bd2d244b992c9ef8ca0a4d37c',
+    accessToken: process.env.REACT_APP_ROLLBAR_TOKEN,
     payload: {
-      environment: 'testenv',
+      environment: 'production',
     },
     captureUncaught: true,
     captureUnhandledRejections: true,
