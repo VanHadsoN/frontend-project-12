@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import io from 'socket.io-client';
 import i18next from 'i18next';
 import LeoProfanity from 'leo-profanity';
@@ -16,7 +16,7 @@ import { appRoutes } from './routes';
 
 const defaultLanguage = 'ru';
 
-const AppWrapper = async () => {
+const init = async () => {
   const i18n = i18next.createInstance();
 
   await i18n
@@ -29,38 +29,22 @@ const AppWrapper = async () => {
         escapeValue: false,
       },
     });
+
   const socket = io(appRoutes.chatPagePath(), { autoConnect: true });
 
-  useEffect(() => {
-    const handleNewMessage = (message) => {
-      store.dispatch(addMessage(message));
-    };
+  socket.on('newMessage', (message) => {
+    store.dispatch(addMessage(message));
+  });
+  socket.on('newChannel', (channel) => {
+    store.dispatch(addChannel(channel));
+  });
+  socket.on('removeChannel', (channel) => {
+    store.dispatch(removeChannel(channel.id));
+  });
+  socket.on('renameChannel', (channel) => {
+    store.dispatch(renameChannel({ id: channel.id, changes: { name: channel.name } }));
+  });
 
-    const handleNewChannel = (channel) => {
-      store.dispatch(addChannel(channel));
-    };
-
-    const handleRemoveChannel = (channel) => {
-      store.dispatch(removeChannel(channel.id));
-    };
-
-    const handleRenameChannel = (channel) => {
-      store.dispatch(renameChannel({ id: channel.id, changes: { name: channel.name } }));
-    };
-
-    socket.on('newMessage', handleNewMessage);
-    socket.on('newChannel', handleNewChannel);
-    socket.on('removeChannel', handleRemoveChannel);
-    socket.on('renameChannel', handleRenameChannel);
-
-    return () => {
-      // Отписываемся от событий при размонтировании компонента
-      socket.off('newMessage', handleNewMessage);
-      socket.off('newChannel', handleNewChannel);
-      socket.off('removeChannel', handleRemoveChannel);
-      socket.off('renameChannel', handleRenameChannel);
-    };
-  }, [socket]);
   const profanityFilter = LeoProfanity;
   profanityFilter.add(profanityFilter.getDictionary(defaultLanguage));
 
@@ -90,4 +74,4 @@ const AppWrapper = async () => {
   );
 };
 
-export default AppWrapper;
+export default init;
