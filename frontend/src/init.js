@@ -16,7 +16,7 @@ import { appRoutes } from './routes';
 
 const defaultLanguage = 'ru';
 
-const Init = async () => {
+const AppWrapper = async () => {
   const i18n = i18next.createInstance();
 
   await i18n
@@ -90,4 +90,4 @@ const Init = async () => {
   );
 };
 
-export default Init;
+export default AppWrapper;
