@@ -15,9 +15,9 @@ const RemoveChannelModalWindow = () => {
   const relevantChannelId = useSelector((state) => state.modalWindow.relevantChannel);
   const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
 
-  const handleRemoveChannel = (id) => {
+  const handleRemoveChannel = async (id) => {
     try {
-      removeSelectedChannel(id);
+      await removeSelectedChannel(id);
       dispatch(closeModalWindow());
       toast.success(t('toast.channelRemoval'));
     } catch (error) {
