@@ -2,7 +2,7 @@ import {
   createContext, useState, useMemo, useCallback,
 } from 'react';
 import { useDispatch } from 'react-redux';
-import { unload } from '../slices/loadingSlice';
+import { setLoadingState } from '../slices/channelsSlice.js';
 
 export const UserDataContext = createContext({});
 
@@ -19,7 +19,7 @@ const UserDataContextProvider = ({ children }) => {
 
   const logOut = useCallback(() => {
     localStorage.removeItem('user');
-    dispatch(unload());
+    dispatch(setLoadingState());
     setUserData(null);
   }, [dispatch]);
 
