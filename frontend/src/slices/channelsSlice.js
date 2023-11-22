@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import fetchInitialData from '../context/InitialDataThunk';
 
@@ -5,8 +6,7 @@ const channelsAdapter = createEntityAdapter();
 const defaultCurrentChannelId = 1;
 const initialState = channelsAdapter.getInitialState({
   currentChannelId: defaultCurrentChannelId,
-  loadingState: 'notLoaded',
-  messagesToRemove: [], // Добавляем новый массив для хранения сообщений, подлежащих удалению
+  loadingState: 'notLoaded', // Добавлено состояние загрузки
 });
 
 const channelSlice = createSlice({
@@ -17,13 +17,10 @@ const channelSlice = createSlice({
     setCurrentChannel: (state, { payload }) => {
       state.currentChannelId = payload;
     },
-    // Модифицируем removeChannel, чтобы добавлять сообщения для удаления
     removeChannel: (state, { payload }) => {
       if (state.currentChannelId === payload) {
         state.currentChannelId = defaultCurrentChannelId;
       }
-      const messagesToRemove = state.entities[payload]?.messages || [];
-      state.messagesToRemove = messagesToRemove;
       channelsAdapter.removeOne(state, payload);
     },
     renameChannel: channelsAdapter.updateOne,
@@ -56,8 +53,7 @@ export const {
   setCurrentChannel,
   removeChannel,
   renameChannel,
-  setLoadingState,
+  setLoadingState, // Новый экшен для установки состояния загрузки
 } = channelSlice.actions;
-export const { removeMessagesByChannel } = channelSlice.actions;
 export { channelsAdapter };
 export default channelSlice.reducer;
