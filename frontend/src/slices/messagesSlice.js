@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-//import fetchInitialData from '../context/InitialDataThunk';
-import { removeChannel as channelActions } from './channelsSlice';
+import fetchInitialData from '../context/InitialDataThunk';
+import { removeMessagesByChannel } from './channelsSlice';
 
 const messagesAdapter = createEntityAdapter();
 const initialState = messagesAdapter.getInitialState();
@@ -11,18 +11,23 @@ const messageSlice = createSlice({
   reducers: {
     addMessage: messagesAdapter.addOne,
     addMessages: messagesAdapter.addMany,
+    removeMessages: (state, { payload }) => {
+      // Удаляем сообщения по массиву идентификаторов сообщений
+      messagesAdapter.removeMany(state, payload);
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(channelActions.removeChannel, (state, action) => {
-      const currentChannelId = action.payload;
-      const mapessagesIds = Object.values(state.entities)
-        .filter((e) => e.channelId === currentChannelId)
-        .map(({ id }) => id);
-      messagesAdapter.removeMany(state, mapessagesIds);
+    builder.addCase(fetchInitialData.fulfilled, (state, { payload }) => {
+      messagesAdapter.setAll(state, payload.messages);
+    });
+    // Добавляем обработку экшена removeMessagesByChannel из channelsSlice.js
+    builder.addCase(removeMessagesByChannel, (state, { payload }) => {
+      // Используем массив messagesToRemove из состояния каналов
+      messagesAdapter.removeMany(state, payload.messagesToRemove);
     });
   },
 });
 
-export const { addMessage } = messageSlice.actions;
+export const { addMessage, removeMessages } = messageSlice.actions;
 export { messagesAdapter };
 export default messageSlice.reducer;
