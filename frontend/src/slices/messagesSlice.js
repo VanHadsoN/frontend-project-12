@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import fetchInitialData from '../context/InitialDataThunk';
-import { removeChannel } from './chanelsSlice';
+import { removeChannel } from './channelsSlice';
 
 const messagesAdapter = createEntityAdapter();
 const initialState = messagesAdapter.getInitialState();
