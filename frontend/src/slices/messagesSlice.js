@@ -17,12 +17,12 @@ const messageSlice = createSlice({
       .addCase(removeChannel, (state, action) => {
         const channelId = action.payload;
         const restMessages = Object.values(state.entities)
-        .filter((message) => message.channelId !== channelId);
+          .filter((message) => message.channelId !== channelId);
         messagesAdapter.setAll(state, restMessages);
       })
       .addCase(fetchInitialData.fulfilled, (state, { payload }) => {
         messagesAdapter.setAll(state, payload.messages);
-    });
+      });
   },
 });
 
