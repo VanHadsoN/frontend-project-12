@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Modal } from 'react-bootstrap';
 import ModalButtton from '../buttons/ModalButtton';
 import { useChatApi } from '../../hooks';
-import { closeModalWindow, setCurrentModalType, setRelevantChannel } from '../../slices/modalWindowSlice';
+import { actions as modalWindowActions } from '../../slices/modalWindowSlice';
 
 const RemoveChannelModalWindow = () => {
   const { t } = useTranslation();
@@ -18,7 +18,7 @@ const RemoveChannelModalWindow = () => {
   const handleRemoveChannel = async (id) => {
     try {
       await removeSelectedChannel(id);
-      dispatch(closeModalWindow());
+      dispatch(modalWindowActions.closeModalWindow());
       toast.success(t('toast.channelRemoval'));
     } catch (error) {
       toast.error(t('toast.networkError'));
@@ -27,9 +27,9 @@ const RemoveChannelModalWindow = () => {
   };
 
   const handleCloseModalWindow = () => {
-    dispatch(closeModalWindow());
-    dispatch(setCurrentModalType(null));
-    dispatch(setRelevantChannel(null));
+    dispatch(modalWindowActions.closeModalWindow());
+    dispatch(modalWindowActions.setCurrentModalType(null));
+    dispatch(modalWindowActions.setRelevantChannel(null));
   };
 
   return (

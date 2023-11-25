@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useChatApi } from '../../hooks';
 import { channelsSelector, channelsNames } from '../../selectors';
-import { closeModalWindow, setCurrentModalType, setRelevantChannel } from '../../slices/modalWindowSlice';
+import { actions as modalWindowActions } from '../../slices/modalWindowSlice';
 import ModalButtton from '../buttons/ModalButtton';
 import channelNameSсhema from '../../validation/channelNameSсhema';
 
@@ -29,9 +29,9 @@ const RenameChannelModalWindow = () => {
   }, []);
 
   const handleCloseModalWindow = () => {
-    dispatch(closeModalWindow());
-    dispatch(setCurrentModalType(null));
-    dispatch(setRelevantChannel(null));
+    dispatch(modalWindowActions.closeModalWindow());
+    dispatch(modalWindowActions.setCurrentModalType(null));
+    dispatch(modalWindowActions.setRelevantChannel(null));
   };
 
   const formik = useFormik({

@@ -6,7 +6,7 @@ import { BiMessageSquareAdd } from 'react-icons/bi';
 import Channel from '../channel/Channel';
 import { channelsSelector, currentChannel } from '../../../selectors';
 import { setCurrentChannel } from '../../../slices/channelsSlice';
-import { openModalWindow, setCurrentModalType } from '../../../slices/modalWindowSlice';
+import { actions as modalWindowActions } from '../../../slices/modalWindowSlice';
 import './style.css';
 
 const ChannelsPanel = () => {
@@ -34,8 +34,8 @@ const ChannelsPanel = () => {
   };
 
   const handleCreateNewChannel = () => {
-    dispatch(setCurrentModalType('add'));
-    dispatch(openModalWindow());
+    dispatch(modalWindowActions.setCurrentModalType('add'));
+    dispatch(modalWindowActions.openModalWindow());
   };
 
   return (

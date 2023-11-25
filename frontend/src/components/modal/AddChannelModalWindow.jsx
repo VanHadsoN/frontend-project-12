@@ -7,7 +7,7 @@ import { useRollbar } from '@rollbar/react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useChatApi } from '../../hooks';
-import { closeModalWindow, setCurrentModalType } from '../../slices/modalWindowSlice';
+import { actions as modalWindowActions } from '../../slices/modalWindowSlice';
 import { channelsNames } from '../../selectors';
 import ModalButtton from '../buttons/ModalButtton';
 import channelNameSсhema from '../../validation/channelNameSсhema';
@@ -26,8 +26,8 @@ const AddChannelModalWindow = () => {
   }, []);
 
   const handleCloseModalWindow = () => {
-    dispatch(closeModalWindow());
-    dispatch(setCurrentModalType(null));
+    dispatch(modalWindowActions.closeModalWindow());
+    dispatch(modalWindowActions.setCurrentModalType(null));
   };
 
   const formik = useFormik({

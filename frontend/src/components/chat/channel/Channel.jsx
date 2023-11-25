@@ -4,7 +4,7 @@ import { ButtonGroup, Dropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { currentChannel } from '../../../selectors';
-import { openModalWindow, setCurrentModalType, setRelevantChannel } from '../../../slices/modalWindowSlice';
+import { actions as modalWindowActions } from '../../../slices/modalWindowSlice';
 import './style.css';
 
 const Channel = ({ channel, onClick }) => {
@@ -23,15 +23,15 @@ const Channel = ({ channel, onClick }) => {
   });
 
   const handleRenameChannel = (channelId) => {
-    dispatch(setCurrentModalType('rename'));
-    dispatch(setRelevantChannel(channelId));
-    dispatch(openModalWindow());
+    dispatch(modalWindowActions.setCurrentModalType('rename'));
+    dispatch(modalWindowActions.setRelevantChannel(channelId));
+    dispatch(modalWindowActions.openModalWindow());
   };
 
   const handleRemoveChannel = (channelId) => {
-    dispatch(setCurrentModalType('remove'));
-    dispatch(setRelevantChannel(channelId));
-    dispatch(openModalWindow());
+    dispatch(modalWindowActions.setCurrentModalType('remove'));
+    dispatch(modalWindowActions.setRelevantChannel(channelId));
+    dispatch(modalWindowActions.openModalWindow());
   };
 
   if (!removable) {
