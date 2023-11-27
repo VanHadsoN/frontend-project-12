@@ -2,16 +2,9 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { appRoutes } from '../../routes';
 import { useAuthorization } from '../../hooks';
+import LogoutButton from '../buttons/LogoutButton';
 import './style.css';
 
-const LogoutButton = (handle, title) => {
-  if (localStorage.getItem('user') !== null) {
-    return (
-      <button type="button" className="logout-button" onClick={handle}>{title}</button>
-    );
-  }
-  return null;
-};
 const NavBar = () => {
   const { t } = useTranslation();
   const { logOut } = useAuthorization();
