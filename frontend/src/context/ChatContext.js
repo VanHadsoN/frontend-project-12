@@ -1,13 +1,10 @@
 import axios from 'axios';
 import { createContext, useMemo, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { addChannel, setCurrentChannel } from '../slices/channelsSlice';
 import { chatContextRoutes } from '../routes';
 
 export const ChatContext = createContext({});
 
 const ChatContextProvider = ({ socket, children }) => {
-  const dispatch = useDispatch();
   const timeout = 4000;
 
   const addNewMessage = useCallback(async (message) => {
@@ -21,9 +18,8 @@ const ChatContextProvider = ({ socket, children }) => {
       .timeout(timeout)
       .emitWithAck('newChannel', channel);
 
-    dispatch(addChannel(data));
-    dispatch(setCurrentChannel(data.id));
-  }, [socket, dispatch, timeout]);
+    return data;
+  }, [socket, timeout]);
 
   const removeSelectedChannel = useCallback(async (id) => {
     await socket

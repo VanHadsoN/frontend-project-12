@@ -7,6 +7,7 @@ import { useRollbar } from '@rollbar/react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useChatApi } from '../../hooks';
+import { addChannel, setCurrentChannel } from '../../slices/channelsSlice';
 import { actions as modalWindowActions } from '../../slices/modalWindowSlice';
 import { channelsNames } from '../../selectors';
 import ModalButtton from '../buttons/ModalButtton';
@@ -35,9 +36,11 @@ const AddChannelModalWindow = () => {
     validationSchema: channelNameSсhema(channelsNamesList, t('modal.channelNameLength'), t('modal.requaredField'), t('modal.uniqueNameError')),
     onSubmit: async (values) => {
       try {
-        await addNewChannel(values);
+        const channelData = await addNewChannel(values);
         handleCloseModalWindow();
         toast.success(t('toast.channelCreation'));
+        dispatch(addChannel(channelData));
+        dispatch(setCurrentChannel(channelData.id));
       } catch (error) {
         toast.error(t('toast.networkError'));
         rollbar.error('AddChannel', error);
