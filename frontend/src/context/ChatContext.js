@@ -33,8 +33,9 @@ const ChatContextProvider = ({ socket, children }) => {
       .emit('renameChannel', updateChannel);
   }, [socket, timeout]);
 
-  const getServerData = useCallback(async (token) => {
-    const response = await axios.get(chatContextRoutes.data(), { headers: { Authorization: `Bearer ${token}` } });
+  const getServerData = useCallback(async () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const response = await axios.get(chatContextRoutes.data(), { headers: { Authorization: `Bearer ${user.token}` } });
     return response;
   }, []);
 
