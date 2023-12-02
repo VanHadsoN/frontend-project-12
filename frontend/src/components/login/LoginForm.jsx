@@ -24,12 +24,9 @@ const LoginForm = () => {
     onSubmit: async (values) => {
       try {
         setInvalidUserData(false);
-        await axios
-          .post(chatContextRoutes.login(), values)
-          .then((response) => {
-            logIn(response.data);
-            navigate(appRoutes.chatPagePath());
-          });
+        const response = await axios.post(chatContextRoutes.login(), values);
+        logIn(response.data);
+        navigate(appRoutes.chatPagePath());
       } catch (error) {
         if (error.isAxiosError && error.response.status === 401) {
           setInvalidUserData(true);
