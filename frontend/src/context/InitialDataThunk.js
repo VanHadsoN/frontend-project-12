@@ -1,10 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import ChatContextProvider from './ChatContext';
 
 const fetchInitialData = createAsyncThunk(
   'fetchInitialData',
-  async (getServerData, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const { data } = await getServerData();
+      const user = JSON.parse(localStorage.getItem('user'));
+      const { data } = await ChatContextProvider.getServerData(user.token);
       return data;
     } catch (error) {
       if (error.isAxiosError) {
