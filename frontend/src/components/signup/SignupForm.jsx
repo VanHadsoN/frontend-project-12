@@ -67,6 +67,53 @@ const SignupForm = () => {
           {t('registration.userNameLength')}
         </Form.Control.Feedback>
       </div>
+      <div className="form-floating mb-3">
+        <Form.Control
+          id="password"
+          type="password"
+          name="password"
+          className="form-control"
+          placeholder={t('registration.password')}
+          onChange={formik.handleChange}
+          isInvalid={isInvalidAuth || (formik.touched.password && formik.errors.password)}
+          required
+        />
+        <Form.Label htmlFor="password" className="form-label">
+          {t('registration.password')}
+        </Form.Label>
+        <Form.Control.Feedback
+          type="invalid"
+          className="invalid-tooltip invalid-feedback"
+          tooltip={isInvalidAuth}
+        >
+          {t('registration.passwordLength')}
+        </Form.Control.Feedback>
+      </div>
+      <div className="form-floating mb-4">
+        <Form.Control
+          id="passwordConfirmation"
+          type="password"
+          name="passwordConfirmation"
+          className="form-control"
+          placeholder={t('registration.passwordConfirmation')}
+          onChange={formik.handleChange}
+          isInvalid={
+            isInvalidAuth
+            || (formik.touched.passwordConfirmation && formik.errors.passwordConfirmation)
+          }
+          required
+        />
+        <Form.Label htmlFor="passwordConfirmation" className="form-label">
+          {t('registration.passwordConfirmation')}
+        </Form.Label>
+        <Form.Control.Feedback
+          type="invalid"
+          className="invalid-tooltip invalid-feedback"
+          tooltip={isInvalidAuth}
+        >
+          {t('registration.passwordMatching')}
+        </Form.Control.Feedback>
+      </div>
       <LoginButton title={t('registration.registrationBtn')} />
     </Form>
   );
