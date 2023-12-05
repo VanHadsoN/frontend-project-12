@@ -20,7 +20,7 @@ const NavBar = () => {
         <NavLink to={appRoutes.chatPagePath()} className="navbar-brand">
           {t('navigation.chatName')}
         </NavLink>
-        { LogoutButton(handleLogout, t('navigation.exitBtn')) }
+        <LogoutButton onLogout={handleLogout} buttonText={t('navigation.exitBtn')} />
       </div>
     </nav>
   );
