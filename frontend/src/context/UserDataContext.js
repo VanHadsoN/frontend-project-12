@@ -23,7 +23,11 @@ const UserDataContextProvider = ({ children }) => {
     setUserData(null);
   }, [dispatch]);
 
-  const getUserName = useCallback(() => userData.username, [userData]);
+  const getUserName = useCallback(() => {
+    const userNameData = JSON.parse(localStorage.getItem(`user_${userData}`));
+    return userNameData?.[userData]?.username;
+  }, [userData]);
+  //const getUserName = useCallback(() => userData.username, [userData]);
 
   // Include getUserName and logOut in the dependency array
   const contextValue = useMemo(() => ({
