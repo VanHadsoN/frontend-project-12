@@ -20,7 +20,12 @@ const SignupForm = () => {
 
   const formik = useFormik({
     initialValues: { username: '', password: '', passwordConfirmation: '' },
-    validationSchema: signupSchema(t('registration.userNameLength'), t('registration.passwordLength'), t('registration.requaredField'), t('registration.passwordMatching')),
+    validationSchema: signupSchema({
+      userNameLength: t('registration.userNameLength'),
+      passwordLength: t('registration.passwordLength'),
+      requiredField: t('registration.requaredField'),
+      passwordMatching: t('registration.passwordMatching'),
+    }),
     onSubmit: async (values) => {
       const { username, password } = values;
       try {

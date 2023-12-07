@@ -1,22 +1,22 @@
 import * as Yup from 'yup';
 
-const signupSchema = (
+const signupSchema = ({
   userNameLength,
   passwordLength,
-  requaredField,
+  requiredField,
   passwordMatching,
-) => Yup.object().shape({
+}) => Yup.object().shape({
   username: Yup
     .string()
     .trim()
     .min(3, userNameLength)
     .max(20, userNameLength)
-    .required(requaredField),
+    .required(requiredField),
   password: Yup
     .string()
     .trim()
     .min(6, passwordLength)
-    .required(requaredField),
+    .required(requiredField),
   passwordConfirmation: Yup
     .string()
     .oneOf([Yup.ref('password')], passwordMatching),
