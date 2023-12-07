@@ -36,7 +36,12 @@ const RenameChannelModalWindow = () => {
 
   const formik = useFormik({
     initialValues: { name: relevantChannelName },
-    validationSchema: channelNameSсhema(channelsNamesList, t('modal.channelNameLength'), t('modal.requaredField'), t('modal.uniqueNameError')),
+    validationSchema: channelNameSсhema({
+      channelsNames: channelsNamesList,
+      channelNameLength: t('modal.channelNameLength'),
+      requiredField: t('modal.requaredField'),
+      uniqueNameError: t('modal.uniqueNameError'),
+    }),
     onSubmit: async (values) => {
       const { name } = values;
       try {
