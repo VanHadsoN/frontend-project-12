@@ -12,12 +12,13 @@ const RemoveChannelModalWindow = () => {
   const rollbar = useRollbar();
   const dispatch = useDispatch();
   const { removeSelectedChannel } = useChatApi();
-  const relevantChannelId = useSelector((state) => state.modalWindow.relevantChannel);
-  const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
+  
+  // Деструктуризация объекта для извлечения свойств из state.modalWindow
+  const { relevantChannel, isOpen } = useSelector((state) => state.modalWindow);
 
-  const handleRemoveChannel = async (id) => {
+  const handleRemoveChannel = async () => {
     try {
-      await removeSelectedChannel(id);
+      await removeSelectedChannel(relevantChannel);
       dispatch(modalWindowActions.closeModalWindow());
       toast.success(t('toast.channelRemoval'));
     } catch (error) {
@@ -33,7 +34,7 @@ const RemoveChannelModalWindow = () => {
   };
 
   return (
-    <Modal show={isModalWindowOpen}>
+    <Modal show={isOpen}>
       <div className="modal-header">
         <div className="modal-title h4">{t('modal.removeChannel')}</div>
         <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModalWindow} />
@@ -43,7 +44,7 @@ const RemoveChannelModalWindow = () => {
         <p className="lead">{t('modal.sure')}</p>
         <div className="d-flex justify-content-end">
           <ModalButtton title={t('modal.cancelBtn')} onClick={handleCloseModalWindow} />
-          <button type="button" className="btn btn-danger w-40" onClick={() => handleRemoveChannel(relevantChannelId)}>
+          <button type="button" className="btn btn-danger w-40" onClick={handleRemoveChannel}>
             {t('modal.removeBtn')}
           </button>
         </div>
