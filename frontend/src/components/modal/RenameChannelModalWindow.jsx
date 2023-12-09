@@ -18,10 +18,9 @@ const RenameChannelModalWindow = () => {
   const dispatch = useDispatch();
   const { renameSelectedChannel } = useChatApi();
   const channelsNamesList = useSelector(channelsNames);
-  const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
-  const relevantChannelId = useSelector((state) => state.modalWindow.relevantChannel);
+  const { isOpen, relevantChannel } = useSelector((state) => state.modalWindow);
   const channels = useSelector(channelsSelector.selectAll);
-  const relevantChannelName = channels.find(({ id }) => id === relevantChannelId).name;
+  const relevantChannelName = channels.find(({ id }) => id === relevantChannel).name;
   const refModalInput = useRef(null);
 
   useEffect(() => {
@@ -45,7 +44,7 @@ const RenameChannelModalWindow = () => {
     onSubmit: async (values) => {
       const { name } = values;
       try {
-        await renameSelectedChannel({ id: relevantChannelId, name });
+        await renameSelectedChannel({ id: relevantChannel, name });
         handleCloseModalWindow();
         toast.success(t('toast.channelRenaming'));
       } catch (error) {
@@ -56,7 +55,7 @@ const RenameChannelModalWindow = () => {
   });
 
   return (
-    <Modal show={isModalWindowOpen}>
+    <Modal show={isOpen}>
       <div className="modal-header">
         <div className="modal-title h4">{t('modal.renameChannel')}</div>
         <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModalWindow} />
