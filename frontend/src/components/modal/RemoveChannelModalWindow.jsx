@@ -12,8 +12,6 @@ const RemoveChannelModalWindow = () => {
   const rollbar = useRollbar();
   const dispatch = useDispatch();
   const { removeSelectedChannel } = useChatApi();
-  
-  // Деструктуризация объекта для извлечения свойств из state.modalWindow
   const { relevantChannel, isOpen } = useSelector((state) => state.modalWindow);
 
   const handleRemoveChannel = async () => {
