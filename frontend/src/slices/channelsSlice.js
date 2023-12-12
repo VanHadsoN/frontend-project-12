@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import fetchInitialData from '../context/InitialDataThunk';
+import fetchInitialData from './InitialDataThunk';
 
 const channelsAdapter = createEntityAdapter();
 const defaultCurrentChannelId = 1;

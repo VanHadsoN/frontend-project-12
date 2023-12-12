@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRollbar } from '@rollbar/react';
 import { useAuthorization, useChatApi } from '../hooks';
-import fetchInitialData from '../context/InitialDataThunk';
+import fetchInitialData from '../slices/InitialDataThunk';
 import { messagesSelector, currentChannel } from '../selectors';
 import ChannelsPanel from '../components/chat/channels-panel/ChannelsPanel';
 import ChatPanel from '../components/chat/chat-panel/ChatPanel';
