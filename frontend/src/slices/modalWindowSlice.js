@@ -7,11 +7,6 @@ const initialState = modalWindowAdapter.getInitialState({
   type: null,
   relevantChannel: null,
 });
-// eslint-disable-next-line
-const closeModalWindow = (modalType = null) => ({ 
-  type: 'CLOSE_MODAL_WINDOW',
-  payload: { modalType },
-});
 
 const modalWindowSlice = createSlice({
   name: 'modalWindow',
@@ -20,12 +15,11 @@ const modalWindowSlice = createSlice({
     openModalWindow: (state) => {
       state.isOpen = true;
     },
-    closeModalWindow: (state, action) => {
+    closeModalWindow: (state) => {
       state.isOpen = false;
-      state.currentModalType = action.payload.modalType;
     },
-    setCurrentModalType: (state, action) => {
-      state.currentModalType = action.payload;
+    setCurrentModalType: (state, { payload }) => {
+      state.type = payload;
     },
     setRelevantChannel: (state, { payload }) => {
       state.relevantChannel = payload;
