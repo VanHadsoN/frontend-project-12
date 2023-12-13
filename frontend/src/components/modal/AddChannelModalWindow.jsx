@@ -27,8 +27,7 @@ const AddChannelModalWindow = () => {
   }, []);
 
   const handleCloseModalWindow = () => {
-    dispatch(modalWindowActions.closeModalWindow());
-    dispatch(modalWindowActions.setCurrentModalType(null));
+    dispatch(modalWindowActions.closeModalWindow(null));
   };
 
   const formik = useFormik({
