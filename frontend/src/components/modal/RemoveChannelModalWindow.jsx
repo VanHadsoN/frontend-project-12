@@ -27,8 +27,6 @@ const RemoveChannelModalWindow = () => {
 
   const handleCloseModalWindow = () => {
     dispatch(modalWindowActions.closeModalWindow());
-    dispatch(modalWindowActions.setCurrentModalType(null));
-    dispatch(modalWindowActions.setRelevantChannel(null));
   };
 
   return (

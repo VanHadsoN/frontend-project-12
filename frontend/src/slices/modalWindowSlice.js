@@ -17,6 +17,8 @@ const modalWindowSlice = createSlice({
     },
     closeModalWindow: (state) => {
       state.isOpen = false;
+      state.type = null;
+      state.relevantChannel = null;
     },
     setCurrentModalType: (state, { payload }) => {
       state.type = payload;

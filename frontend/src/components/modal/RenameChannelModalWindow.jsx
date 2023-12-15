@@ -29,8 +29,6 @@ const RenameChannelModalWindow = () => {
 
   const handleCloseModalWindow = () => {
     dispatch(modalWindowActions.closeModalWindow());
-    dispatch(modalWindowActions.setCurrentModalType(null));
-    dispatch(modalWindowActions.setRelevantChannel(null));
   };
 
   const formik = useFormik({
