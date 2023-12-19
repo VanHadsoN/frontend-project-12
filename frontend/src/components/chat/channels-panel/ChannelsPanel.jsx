@@ -34,8 +34,7 @@ const ChannelsPanel = () => {
   };
 
   const handleCreateNewChannel = () => {
-    dispatch(modalWindowActions.setCurrentModalType('add'));
-    dispatch(modalWindowActions.openModalWindow());
+    dispatch(modalWindowActions.openModalWindow({ type: 'add' }));
   };
 
   return (

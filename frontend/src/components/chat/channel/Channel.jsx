@@ -23,15 +23,11 @@ const Channel = ({ channel, onClick }) => {
   });
 
   const handleRenameChannel = (channelId) => {
-    dispatch(modalWindowActions.setCurrentModalType('rename'));
-    dispatch(modalWindowActions.setRelevantChannel(channelId));
-    dispatch(modalWindowActions.openModalWindow());
+    dispatch(modalWindowActions.openModalWindow({ type: 'rename', channelId }));
   };
 
   const handleRemoveChannel = (channelId) => {
-    dispatch(modalWindowActions.setCurrentModalType('remove'));
-    dispatch(modalWindowActions.setRelevantChannel(channelId));
-    dispatch(modalWindowActions.openModalWindow());
+    dispatch(modalWindowActions.openModalWindow({ type: 'remove', channelId }));
   };
 
   if (!removable) {

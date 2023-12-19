@@ -12,8 +12,10 @@ const modalWindowSlice = createSlice({
   name: 'modalWindow',
   initialState,
   reducers: {
-    openModalWindow: (state) => {
+    openModalWindow: (state, action) => {
       state.isOpen = true;
+      state.type = action.payload.type;
+      state.relevantChannel = action.payload.channelId;
     },
     closeModalWindow: (state) => {
       state.isOpen = false;
