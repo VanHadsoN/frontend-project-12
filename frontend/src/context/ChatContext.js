@@ -8,9 +8,11 @@ const ChatContextProvider = ({ socket, children }) => {
   const timeout = 4000;
 
   const addNewMessage = useCallback(async (message) => {
-    await socket
+    const { data } = await socket
       .timeout(timeout)
       .emitWithAck('newMessage', message);
+
+      return data;
   }, [socket, timeout]);
 
   const addNewChannel = useCallback(async (channel) => {
@@ -22,15 +24,19 @@ const ChatContextProvider = ({ socket, children }) => {
   }, [socket, timeout]);
 
   const removeSelectedChannel = useCallback(async (id) => {
-    await socket
+    const { data } = await socket
       .timeout(timeout)
       .emitWithAck('removeChannel', { id });
+
+      return data;
   }, [socket, timeout]);
 
   const renameSelectedChannel = useCallback(async (updateChannel) => {
-    await socket
+    const { data } = await socket
       .timeout(timeout)
       .emitWithAck('renameChannel', updateChannel);
+
+      return data;
   }, [socket, timeout]);
 
   const getServerData = useCallback(async () => {
