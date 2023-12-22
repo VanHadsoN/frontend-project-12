@@ -38,8 +38,7 @@ const Chat = () => {
     if (loadingStatus === 'failed' || loadingStatus === 'authError') {
       logOut();
       navigate(appRoutes.loginPagePath());
-      const errorMessage =
-        loadingStatus === 'failed' ? t('toast.networkError') : t('toast.authError');
+      const errorMessage = loadingStatus === 'failed' ? t('toast.networkError') : t('toast.authError');
       const errorType = loadingStatus === 'failed' ? 'ChatFailed' : 'AuthFailed';
       toast.error(errorMessage);
       rollbar.error(errorType);
