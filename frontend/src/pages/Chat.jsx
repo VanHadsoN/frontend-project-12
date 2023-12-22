@@ -35,18 +35,14 @@ const Chat = () => {
   }, [dispatch, getServerData]);
 
   useEffect(() => {
-    if (loadingStatus === 'failed') {
+    if (loadingStatus === 'failed' || loadingStatus === 'authError') {
       logOut();
       navigate(appRoutes.loginPagePath());
-      toast.error(t('toast.networkError'));
-      rollbar.error('ChatFailed');
-    }
-
-    if (loadingStatus === 'authError') {
-      logOut();
-      navigate(appRoutes.loginPagePath());
-      toast.error(t('toast.authError'));
-      rollbar.error('AuthFailed');
+      const errorMessage =
+        loadingStatus === 'failed' ? t('toast.networkError') : t('toast.authError');
+      const errorType = loadingStatus === 'failed' ? 'ChatFailed' : 'AuthFailed';
+      toast.error(errorMessage);
+      rollbar.error(errorType);
     }
   }, [loadingStatus, logOut, navigate, rollbar, t]);
 
