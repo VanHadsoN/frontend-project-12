@@ -1,15 +1,11 @@
 import axios from 'axios';
 import { createContext, useMemo, useCallback } from 'react';
 import { chatContextRoutes } from '../routes';
-import io from 'socket.io-client';
-import { appRoutes } from '../routes';
 
 export const ChatContext = createContext({});
 
-const ChatContextProvider = ({ children }) => {
+const ChatContextProvider = ({ socket, children }) => {
   const timeout = 4000;
-
-  const socket = io(appRoutes.chatPagePath(), { autoConnect: true });
 
   const addNewMessage = useCallback(async (message) => {
     const { data } = await socket
@@ -55,8 +51,7 @@ const ChatContextProvider = ({ children }) => {
     removeSelectedChannel,
     renameSelectedChannel,
     getServerData,
-    socket
-  }), [addNewMessage, addNewChannel, removeSelectedChannel, renameSelectedChannel, getServerData, socket]);
+  }), [addNewMessage, addNewChannel, removeSelectedChannel, renameSelectedChannel, getServerData]);
 
   return (
     <ChatContext.Provider value={contextValue}>
