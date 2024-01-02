@@ -1,10 +1,9 @@
 import axios from 'axios';
-import { createContext, useMemo, useCallback } from 'react';
-import { chatContextRoutes } from '../routes';
 import io from 'socket.io-client';
+import { createContext, useMemo, useCallback } from 'react';
+import { chatContextRoutes, appRoutes } from '../routes';
 import { addMessage } from '../slices/messagesSlice';
 import { addChannel, removeChannel, renameChannel } from '../slices/channelsSlice';
-import { appRoutes } from '../routes';
 import store from '../slices';
 
 export const ChatContext = createContext({});
@@ -72,7 +71,8 @@ const ChatContextProvider = ({ children }) => {
     renameSelectedChannel,
     getServerData,
     socket,
-  }), [addNewMessage, addNewChannel, removeSelectedChannel, renameSelectedChannel, getServerData, socket]);
+  }), [addNewMessage, addNewChannel, removeSelectedChannel, renameSelectedChannel, getServerData, 
+    socket]);
 
   return (
     <ChatContext.Provider value={contextValue}>
