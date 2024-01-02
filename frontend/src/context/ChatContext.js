@@ -71,7 +71,7 @@ const ChatContextProvider = ({ children }) => {
     renameSelectedChannel,
     getServerData,
     socket,
-  }), [addNewMessage, addNewChannel, removeSelectedChannel, renameSelectedChannel, getServerData, 
+  }), [addNewMessage, addNewChannel, removeSelectedChannel, renameSelectedChannel, getServerData,
     socket]);
 
   return (
