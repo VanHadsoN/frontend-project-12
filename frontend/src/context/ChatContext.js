@@ -5,11 +5,13 @@ import { chatContextRoutes, appRoutes } from '../routes';
 import { addMessage } from '../slices/messagesSlice';
 import { addChannel, removeChannel, renameChannel } from '../slices/channelsSlice';
 import store from '../slices';
+import { useAuthorization } from '../hooks';
 
 export const ChatContext = createContext({});
 
 const ChatContextProvider = ({ children }) => {
   const timeout = 4000;
+  const { user } = useAuthorization();
 
   const socket = io(appRoutes.chatPagePath(), { autoConnect: true });
 
@@ -59,10 +61,9 @@ const ChatContextProvider = ({ children }) => {
   }, [socket, timeout]);
 
   const getServerData = useCallback(async () => {
-    const user = JSON.parse(localStorage.getItem('user'));
     const response = await axios.get(chatContextRoutes.data(), { headers: { Authorization: `Bearer ${user.token}` } });
     return response;
-  }, []);
+  }, [user]);
 
   const contextValue = useMemo(() => ({
     addNewMessage,
