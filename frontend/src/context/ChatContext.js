@@ -1,30 +1,11 @@
 import axios from 'axios';
-import io from 'socket.io-client';
 import { createContext, useMemo, useCallback } from 'react';
-import { chatContextRoutes, appRoutes } from '../routes';
-import { addMessage } from '../slices/messagesSlice';
-import { addChannel, removeChannel, renameChannel } from '../slices/channelsSlice';
-import store from '../slices';
+import { chatContextRoutes } from '../routes';
 
 export const ChatContext = createContext({});
 
-const ChatContextProvider = ({ children }) => {
+const ChatContextProvider = ({ socket, children }) => {
   const timeout = 4000;
-
-  const socket = io(appRoutes.chatPagePath(), { autoConnect: true });
-
-  socket.on('newMessage', (message) => {
-    store.dispatch(addMessage(message));
-  });
-  socket.on('newChannel', (channel) => {
-    store.dispatch(addChannel(channel));
-  });
-  socket.on('removeChannel', (channel) => {
-    store.dispatch(removeChannel(channel.id));
-  });
-  socket.on('renameChannel', (channel) => {
-    store.dispatch(renameChannel({ id: channel.id, changes: { name: channel.name } }));
-  });
 
   const addNewMessage = useCallback(async (message) => {
     const { data } = await socket
@@ -70,9 +51,7 @@ const ChatContextProvider = ({ children }) => {
     removeSelectedChannel,
     renameSelectedChannel,
     getServerData,
-    socket,
-  }), [addNewMessage, addNewChannel, removeSelectedChannel, renameSelectedChannel, getServerData,
-    socket]);
+  }), [addNewMessage, addNewChannel, removeSelectedChannel, renameSelectedChannel, getServerData]);
 
   return (
     <ChatContext.Provider value={contextValue}>
