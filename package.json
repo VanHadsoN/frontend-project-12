@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Konstantin Stasenko",
   "license": "ISC",
   "dependencies": {
     "@hexlet/chat-server": "^1.1.9"
