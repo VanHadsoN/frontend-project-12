@@ -1,10 +1,13 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/VanHadsoN/frontend-project-12/workflows/hexlet-check/badge.svg)](https://github.com/VanHadsoN/frontend-project-12/actions)",
+  "description": "Hexlet-Chat (like Slack) is a real-time messaging application. It includes registration, authorization, error page and chat page.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build --prefix frontend",
+    "start": "start-server -s ./frontend/build",
+    "postinstall": "cd frontend && npm ci"
   },
   "author": "Konstantin Stasenko",
   "license": "ISC",
